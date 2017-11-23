@@ -5,3 +5,6 @@ main:
 
 sketch:
 	pdflatex sketch.tex
+
+clean:
+	rm filled*

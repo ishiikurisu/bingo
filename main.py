@@ -39,6 +39,6 @@ if __name__ == '__main__':
 
     names = all_names
     for i in range(5):
-        names = numpy.random.permutation(names)
+        numpy.random.shuffle(names)
         output = 'filled{0}.tex'.format(i+1)
         draw_table(tex, names[0:20], output)
