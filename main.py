@@ -1,5 +1,6 @@
 import os
 import jinja2 as jinja
+import numpy.random
 
 def build(names):
     outlet = []
@@ -19,12 +20,12 @@ def build(names):
     outlet.append(line)
     return outlet
 
-def draw_table(tex, names):
+def draw_table(tex, names, output):
     template = jinja.Template(tex)
     outlet = template.render(lines=build(names))
-    with open('filled.tex', 'w') as fp:
+    with open(output, 'w') as fp:
         fp.write(outlet)
-    os.system('pdflatex filled.tex')
+    os.system('pdflatex {}'.format(output))
 
 if __name__ == '__main__':
     tex = ''
@@ -36,4 +37,8 @@ if __name__ == '__main__':
         for line in fp:
             all_names.append(line.strip())
 
-    draw_table(tex, all_names[:20])
+    names = all_names
+    for i in range(5):
+        names = numpy.random.permutation(names)
+        output = 'filled{0}.tex'.format(i+1)
+        draw_table(tex, names[0:20], output)
