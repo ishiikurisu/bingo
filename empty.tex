@@ -1,0 +1,15 @@
+\documentclass[a4paper,40pt]{scrartcl}
+\usepackage{pdflscape}
+\usepackage{tabularx}
+
+\begin{document}
+    \begin{landscape}
+        \thispagestyle{empty}
+        \noindent
+        \centering
+        \begin{tabularx}{\linewidth}{| X | X | X | X | X |}
+            \hline
+            {% for line in lines %}{{line}}{% endfor %}
+        \end{tabularx}
+    \end{landscape}
+\end{document}
